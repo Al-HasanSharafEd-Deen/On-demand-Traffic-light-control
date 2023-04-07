@@ -1,8 +1,8 @@
 /*
  * APP_interface.h
  *
- *  Created on: 12 Oct 2022
- *      Author: alhas
+ *  Created on: Apr 6, 2023
+ *      Author: Al-Hasan Ameer
  */
 
 #ifndef APP_APP_INTERFACE_H_
@@ -22,13 +22,13 @@ typedef enum{
 void APP_voidInit(void);
 
 /*All application logic*/
-void APP_voidStart(void);
+u8 APP_u8Start(void);
 
 /*Pedestrian Mode logic*/
-void APP_voidPedestrianMode(void);
+u8 APP_u8PedestrianMode(void);
 
 /*end of logic*/
-void APP_voidFinish(void);
+u8 APP_u8Finish(void);
 
 /*INT0_ISR function Prototype*/
 void INT0_ISR(void);

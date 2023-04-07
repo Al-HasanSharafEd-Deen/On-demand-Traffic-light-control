@@ -1,8 +1,8 @@
 /*
  * APP_program.c
  *
- *  Created on: 12 Oct 2022
- *      Author: alhasan
+ *  Created on: Apr 6, 2023
+ *      Author: Al-Hasan Ameer
  */
 
 /*LIB includes */
@@ -59,7 +59,7 @@ void APP_voidInit(void)
 }
 
 /*All application logic*/
-u8 APP_voidStart(void)
+u8 APP_u8Start(void)
 {
 	/*return error state*/
 	u8 Local_u8ErrorState=0;
@@ -96,13 +96,13 @@ u8 APP_voidStart(void)
 		carYellow_LED = LED_IDLE ;
 		break;
 		/*if mode is pedestrian call the pedestrian function*/
-	case PEDESTRIAN_MODE: APP_voidPedestrianMode(); break;
+	case PEDESTRIAN_MODE: APP_u8PedestrianMode(); break;
 	default : Local_u8ErrorState=1; break;
 	}
 
 	/*return to normal mode*/
 	modeState = NORMAL_MODE ;
-	APP_voidStart();
+	APP_u8Start();
 
 	/*return error state*/
 	return Local_u8ErrorState;
@@ -110,7 +110,7 @@ u8 APP_voidStart(void)
 
 
 /*Pedestrian Mode logic*/
-u8 APP_voidPedestrianMode(void)
+u8 APP_u8PedestrianMode(void)
 {
 	/*return error state*/
 	u8 Local_u8ErrorState=0;
@@ -161,14 +161,14 @@ u8 APP_voidPedestrianMode(void)
 		Local_u8ErrorState=1;
 	}
 	/*call this function to start turn off pedestrian mode*/
-	APP_voidFinish();
+	APP_u8Finish();
 
 	/*return error state*/
 	return Local_u8ErrorState;
 }
 
 /*end of logic*/
-u8 APP_voidFinish(void)
+u8 APP_u8Finish(void)
 {
 	/*return error state*/
 	u8 Local_u8ErrorState=0;
@@ -203,7 +203,7 @@ u8 APP_voidFinish(void)
 
 	/*back to normal mode*/
 	modeState = NORMAL_MODE ;
-	APP_voidStart();
+	APP_u8Start();
 
 	/*return error state*/
 	return Local_u8ErrorState;
@@ -213,5 +213,5 @@ u8 APP_voidFinish(void)
 void INT0_ISR(void)
 {
 	modeState = PEDESTRIAN_MODE;
-	APP_voidStart();
+	APP_u8Start();
 }
